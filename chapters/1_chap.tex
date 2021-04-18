@@ -1,0 +1,77 @@
+%LTeX: language=de-DE
+\chapter{Theoretische Grundlagen}
+	Ziel des Versuches ist es, die Aktivierungsenergie \(E_A\), sowie die Reaktionsordnung und die (temperaturabhängigen)
+	Reaktionskonstanten \(k_T\)	der hydrolytischen Spaltung von Ethylacetat in alkalischer Lösung (\ch{NaOH}) zu ermitteln. Die hierzu
+	erforderlichen Konzentration-Zeit-Diagramme lassen sich durch die Reaktion begleitende Messungen der spezifischen
+	Leitfähigkeit der Lösung ermitteln.
+	\begin{reaction}
+		CH_3COO-C_2H_5 + Na^+ + OH^- -> Na^+ + CH_3COO^- + C_2H_5OH
+		"\label{re:hydrolyse_ethylacetat}"
+	\end{reaction}
+	%
+	Das Verhältnis der Momentantenkonzentration \(c(t)\) zur Ausgangskonzentration der Edukte \(c_0\) verhält sich proportional
+	zum Quotienten aus der Differenz zwischen momentanem spezifischen Leitwert \(\kappa(t)\) und dem spez. Leitwert nachdem
+	die Reaktion zum Erliegen gekommen \(\kappa_{\infty}\) ist und der Differenz zwischen dem spez. Leitwert der Eduktlösung \(\kappa_0\)
+	und der Produktlösung \(\kappa_{\infty}\).
+	Mathematisch ausgedrückt gilt
+	\begin{equation}
+		\frac{c(t)}{c_0} \propto \frac{\kappa(t) - \kappa_{\infty}}{\kappa_0 - \kappa_{\infty}} \qquad \Rightarrow \qquad c(t) = c_0 \frac{\kappa(t) - \kappa_{\infty}}{\kappa_0 - \kappa_{\infty}}
+		\label{eq:leitwert zu konzentration}
+	\end{equation}
+	Dies erschließt sich aus der Überlegung, dass der Ladungstransport in der Lösung durch die vorhandenen Ionen vermitteln wird
+	und somit mit einem Massentransport einhergeht. Mit Blick auf \cref{re:hydrolyse_ethylacetat} ändern sich über den Reaktionsverlauf die zur Leitfähigkeit
+	beitragenden Ionen hierbei zwar nicht in ihrer Anzahl, die negativen Ladungsträger jedoch nehmen an Masse und Volumen
+	zu und setzen somit ihre Gesamtbeweglichkeit herab. Tabellenwerken ist zur Ionenbeweglichkeit in Wasser bei \SI{25}{\celsius}
+	für Hydroxid ein Wert von \SI{20,64 \cdot 10^{-8}}{\frac{m^2}{Vs}} zu entnehmen. Die des Acetat-Ions zeigt sich dem gegenüber mit
+	\SI{4,24 \cdot 10^{-8}}{\frac{m^2}{Vs}} auf ein Fünftel reduziert \cite{Einstieg.in.die.Physikalische.Chemie.fuer.Nebenfaechler.Bechmann.2016}.\par\medskip
+	%
+	\begin{equation}
+		-\frac{dc_A}{dt} =
+		\begin{cases}
+			k \cdot c_A & \text{1. Ordnung} \\
+			\\
+			\left.
+			\begin{aligned}
+				&k \cdot c_A \cdot c_B \\
+				&k \cdot c_A^2
+			\end{aligned}\right\} &\text{2. Ordnung} \\
+			\\
+			\left.
+			\begin{aligned}
+				&k \cdot c_A \cdot c_B \cdot c_C \\
+				&k \cdot c_A \cdot c_B^2 \\
+				&k \cdot c_A^3
+			\end{aligned}\right\} &\text{3. Ordnung} \\ 
+			\\
+			... & \text{n-te Ordnung}
+		\end{cases}
+		\label{eq:ordnungen}
+	\end{equation}
+	Bei der untersuchten Reaktion geht jeweils ein Hydroxid-Ion in ein Acetat-Ion über. Die stöchiometrischen Vorfaktoren sind also
+	gleich und es kann eine Reaktion erster Ordnung nach \cref{eq:ordnungen} angenommen werden. Mit Kenntnis eines aus \cref{eq:leitwert zu konzentration}
+	abgeleiteten Konzentration-Zeit-Profils lässt sich vermittels seiner Steigung ein Wert für die Reaktionsgeschwindigkeitskonstante \(k\)
+	nach \cref{eq:get k} ermitteln.
+	\begin{gather}
+		-\frac{dc_A}{dt} = k \cdot c_A \qquad \Leftrightarrow \qquad -\int_{c_0}^{c_A} dc_A = \int_{0}^t k \cdot dt \nonumber \\
+		-\ln{c_A} = k \cdot t - \ln{c_0}
+		\label{eq:get k}
+	\end{gather}\par\medskip
+	%
+	Die Arrheniussche-Gleichung \cite{Einstieg.in.die.Physikalische.Chemie.fuer.Nebenfaechler.Bechmann.2016}
+	\begin{equation}
+		k_{exp} = k_0 \cdot e^{-\frac{E_A}{R \cdot T}}
+		\label{eq:arrhenius}
+	\end{equation}
+	bzw. ihre Integralform, die aus der logarithmierten Form von \cref{eq:arrhenius} wie folgt gebildet werden kann
+	\begin{gather}
+		\int_{\ln{k_1}}^{\ln{k_2}} d\left(\ln{\frac{k_{exp}}{k_0}}\right) = \int_{\ln{k_1}}^{\ln{k_2}} d(\ln{k}) = \frac{E_A}{R} \int_{T_1}^{T_2} \frac{1}{T^2} dT \nonumber \\
+		\ln{\frac{k_2}{k_1}} = \frac{E_A}{R} \cdot \left(\frac{1}{T_2} - \frac{1}{T_1}\right)
+		\label{eq:arrhenius integralform}
+	\end{gather}
+	liefert hierbei ein Werkzeug zur Erschließung der Aktivierungsenergie durch Umstellen von \cref{eq:arrhenius integralform} gemäß \cref{eq:aktivierungsenergie aus arrhenius}.
+	\begin{equation}
+		E_A = R \cdot \left(\frac{1}{T_2} - \frac{1}{T_1}\right)^{-1} \ln{\frac{k_2}{k_1}}
+		\label{eq:aktivierungsenergie aus arrhenius}
+	\end{equation}
+	\(R\) ist hier die universelle Gaskonstante, \(T_{1,2}\) sind (bekannte) Reaktionstemperaturen und \(k_{1,2}\)
+	ermittelte temperaturabhängige Reaktionsgeschwindigkeitskonstanten.
