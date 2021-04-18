@@ -1,0 +1,44 @@
+%LTeX: enabled=false
+\documentclass[german,paper=a4,11pt,titlepage,twoside=true,headings=normal,numbers=noenddot,captions=tableabove,listof=totoc,index=totoc,bibliography=totoc]{scrreprt}
+%-----------------------------------------------------------------
+\usepackage{etoolbox}
+\newbool{deutsch}
+\booltrue{deutsch}
+%-----------------------------------------------------------------
+\input{pre-packages}
+\input{pre-variables}
+\input{pre-newcommand}
+\input{pre-page-layout}
+\input{pre-header-footer-2010}
+\input{pre-header-footer-text-report}
+
+\DeclareNameAlias{author}{family-given}
+\DeclareNameAlias{editor}{family-given}
+\DeclareNameAlias{translator}{family-given}
+\addbibresource{quellen.bib}
+
+\chemsetup{
+	modules = reactions,
+	formula = chemformula,
+	reactions/tag-open=(R,
+	reactions/tag-close=),
+}
+
+\begin{document}
+%-----------------------------------------------------------------
+\input{chapters/0_top}
+\tableofcontents
+\newpage
+%-----------------------------------------------------------------
+\newcommand{\chaptercount}{4} % put number of chapters here
+\foreach \c in {1,...,\chaptercount}{\input{chapters/\c_chap}}
+%-----------------------------------------------------------------
+\newpage
+\listoffigures 
+\listoftables
+\input{chapters/glossary}
+\appendix
+\input{chapters/appendix}
+\printbibliography
+%=================================================================
+\end{document}
