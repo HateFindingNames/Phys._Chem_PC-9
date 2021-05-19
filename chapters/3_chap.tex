@@ -1,0 +1,55 @@
+%LTeX: language=DE
+\chapter{Auswertung und Diskussion}
+	Die im Versuch erhaltenen Messdaten wurden nach \cref{eq:leitwert zu konzentration} in die jeweiligen Momentankonzentrationen \(c(t)\)
+	umgerechnet und ihre Inverse über Zeit aufgetragen. Wie in \cref{fig:messdaten} ersichtlich, entsprechen ihre Verläufe für
+	alle im Versuchsverlauf behandelten Reaktionstemperaturen einer Geraden, die wiederum dem Zusammenhang aus \cref{eq:get k}
+	genügen. Allen gemein ist eine Anfangskonzentration \(c_0\) von \SI{0,05}{\frac{mol}{L}}.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=.95\textwidth]{messdaten/PC-9_Auswertung.JPG}
+		\caption{Mittels Konduktometer gewonnenene Geschwindigkeitsprofile. Die Punkte 1-4 bilden Stellen ab, anhand derer die jeweiligen Steigungen abgelesen werden. Desweiteren ist zu erkennen,
+		dass für alle vier Messungen \(c_0 = \SI{0,05}{\frac{mol}{L}}\) gilt.}
+		\label{fig:messdaten}
+	\end{figure}
+
+	Hieraus abgeleitet lässt sich nach Umstellen die jeweilige Reaktionsgeschwindigkeitskonstante \(k_n\) ermitteln zu
+	\begin{equation}
+		k_1 \approx \ln \left(\SI{0,05}{\frac{mol}{L}} \cdot \SI{46}{\frac{L}{mol}}\right) \cdot \SI{90}{s^{-1}} \approx \SI{0,009}{s^{-1}}
+		\label{eq:get real k}
+	\end{equation}
+	bzw. analog hierzu
+	\begin{align}
+		k_2 &\approx \SI{0,007}{s^{-1}} \nonumber \\
+		k_3 &\approx \SI{0,005}{s^{-1}} \nonumber \\
+		k_4 &\approx \SI{0,004}{s^{-1}} \nonumber
+	\end{align}
+
+	Mit den zugehörigen Temperaturen ergibt sich mit \cref{eq:aktivierungsenergie aus arrhenius} die Aktivierungsenergie
+	zu
+	\begin{align}
+		E_{A_{1,2}} &= \SI{8,314}{\frac{J}{mol \cdot K}} \ln\left(\frac{\SI{0,009}{s^{-1}}}{\SI{0,007}{s^{-1}}}\right) \cdot \left( \frac{1}{\SI{313,15}{K}} - \frac{1}{\SI{308,15}{K}}\right)^{-1} \nonumber \\
+			&\approx \SI{-40327,023}{\frac{J}{mol}}
+		\label{eq:aktivierungsenergie for real}
+	\end{align}
+	Hierbei wurden die Geschwindigkeitsprofile bei \SI{40}{\celsius} und \SI{35}{\celsius} herangezogen.
+	Im Vergleich hierzu ergibt sich die Aktivierungsenergie unter Betrachtung der beiden Profile für \SI{40}{\celsius} und \SI{25}{\celsius}
+	zu \(E_{A_{1,4}} \approx \SI{-41967,55}{\frac{J}{mol}}\).
+
+	\section{Fehlerbetrachtung}
+		Im Verlauf des Versuchs werden sowohl fehlerbehaftete Messinstrumente zur Erzeugung der Ausgangslösungen verwendet,
+		als auch Messinstrumente zur Aufzeichnung der Primärdaten. Da in diesem Versuch die Messunsicherheit durch die Handhabung
+		der Laborgeräte nicht abgeschätzt werden kann, wird sich hier auf den Impakt des Konduktometers auf die Unsicherheit der
+		Messdaten beschränkt.\par\medskip
+		Aus \cref{eq:leitwert zu konzentration} geht hervor, dass drei Leitwertmessungen herangezogen werden, um auf die Konzentration
+		der Lösung zu schließen.
+		\begin{align}
+			\Delta c(t) &= \left|\frac{dc(t)}{dc_0}\right| \cdot \Delta c_0 + \left| \frac{dc(t)}{d\kappa_0} \right| \cdot \Delta \kappa_0 + \left| \frac{dc(t)}{d\kappa_{\infty}} \right| \cdot \Delta \kappa_{\infty} + \left| \frac{dc(t)}{d\kappa(t)} \right| \cdot \Delta \kappa(t) \nonumber \\
+						&= \Delta c_0 + \left( \left| c_0 \frac{\kappa_{\infty} - \kappa(t)}{\left( \kappa_0 - \kappa_{\infty} \right)^2} \right|
+						+ \left| c_0 \frac{\kappa(t) - \kappa_0}{\left( \kappa_0 - \kappa_{\infty} \right)^2} \right|
+						+ \left| \frac{c_0}{\left( \kappa_0 - \kappa_{\infty} \right)} \right| \right) \cdot \Delta \kappa
+			\label{eq:fehler kondukt}
+		\end{align}
+		Da alle Leitwerte mit dem gleichen Konduktometer gemessen werden und der Messfehler als absolut angenommen wird kann
+		\(\Delta \kappa_0 = \Delta \kappa_{\infty} = \Delta \kappa(t) = \Delta \kappa\) gesetzt werden. Mit Blick auf den zweiten und
+		dritten Term in \cref{eq:fehler kondukt} wird ersichtlich, dass der Messfehler der Anfangs- und Endleitwerte quadratisch in den
+		Fehler der Konzentration eingeht.

@@ -1,5 +1,5 @@
 %LTeX: enabled=false
-\documentclass[german,paper=a4,11pt,titlepage,twoside=true,headings=normal,numbers=noenddot,captions=tableabove,listof=totoc,index=totoc,bibliography=totoc]{scrreprt}
+\documentclass[german,paper=a4,11pt,titlepage,oneside=true,headings=normal,numbers=noenddot,captions=tableabove,listof=totoc,index=totoc,bibliography=totoc]{scrreprt}
 %-----------------------------------------------------------------
 \usepackage{etoolbox}
 \newbool{deutsch}
@@ -23,15 +23,36 @@
 	reactions/tag-open=(R,
 	reactions/tag-close=),
 }
-
-\begin{document}
+\usepackage{setspace}
+% \setmainfont{Calibri.ttf}[]
+% \addtokomafont{disposition}{\rmfamily}
+% \addtokomafont{caption}{\rmfamily}
+% \renewcommand{\familydefault}{\sfdefault}
+\onehalfspacing%
+\begin{document}%
 %-----------------------------------------------------------------
 \input{chapters/0_top}
 \tableofcontents
 \newpage
 %-----------------------------------------------------------------
-\newcommand{\chaptercount}{4} % put number of chapters here
-\foreach \c in {1,...,\chaptercount}{\input{chapters/\c_chap}}
+% \newgeometry{
+% 	layout=a4paper,
+% 	left=20mm,
+% 	right=40mm,
+% 	top=15mm,
+% 	headsep=10mm,
+% 	footskip=40pt
+% }
+\setlength{\hoffset}{-2.54 cm}
+\setlength{\marginparwidth}{40mm}
+\setlength{\oddsidemargin}{2 cm}
+\include{chapters/1_chap.tex}
+\include{chapters/2_chap.tex}
+\include{chapters/3_chap.tex}
+% \include{chapters/4_chap.tex}
+% \newcommand{\chaptercount}{4} % put number of chapters here
+% \foreach \c in {1,...,\chaptercount}{\input{chapters/\c_chap}}
+% \restoregeometry
 %-----------------------------------------------------------------
 \newpage
 \listoffigures 
